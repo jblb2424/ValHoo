@@ -8,15 +8,16 @@
 </head>
 <body>
 	<h1>Welcome to Valhoo!</h1>
-	<form>
+	<form action = "#" method = "post">
+		{% csrf_token %}
   		Enter Company Ticker:<br>
-  		<input type="text" name="ticker"><br>
+  		<input type="text" name="ticker" method = "post"><br>
   		Enter Data to Retrieve:<br>
-  		<input type="data" name="value"><br>
+  		<input type="data" name="value" method = "post"><br>
   		 <input type="submit" value="Submit">
 	</form>
 	<div style="margin:0 auto;text-align:center">
-	<iframe width="800" height="600" frameborder="0" seamless="seamless" scrolling="no" src="https://plot.ly/~jblb2424/0/.embed?width=800&height=600"></iframe>
+	<iframe width="800" height="600" frameborder="0" seamless="seamless" scrolling="no" src= {{ url }}></iframe>
 	</div>
 
 </body>

@@ -8,6 +8,8 @@ import urllib
 import json
 from pprint import pprint
 
+
+
 # p = py.sign_in("jblb2424", "Peg24lee")
 # plotly('jblb2424', 'yi6kip4q4i')  # this is YOUR account information from plotly
 
@@ -44,9 +46,10 @@ def parse_data(ticker, data):
 	data = Data([trace0])
 	return data
 
-def plot_data():
+def plot_data(data):
 	# layout = {
 	# title: 'Here is Your Graph',
 	# showlegend: false}
-	plot_url = py.plot(parse_data('msft', 'revenue'), filename = 'basic-line', sharing = 'public', auto_open = False)
+	# plot_url = py.plot(parse_data('msft, 'revenue'), filename = 'basic-line', sharing = 'public', auto_open = False)
+	plot_url = py.plot(data, filename = 'basic-line', sharing = 'public', auto_open = False)
 	return plot_url
