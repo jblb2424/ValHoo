@@ -16,9 +16,6 @@ from pprint import pprint
 
 plotly.tools.set_credentials_file(username='jblb2424', api_key='yi6kip4q4i')
 
-
-
-
 def parse_data(ticker, data):
 	url_str = 'http://edgaronline.api.mashery.com/v2/corefinancials/ann?primarysymbols='+ticker+'&appkey=qmhuw98c4cacxsr5j559gbwn'
 
@@ -53,3 +50,7 @@ def plot_data(data):
 	# plot_url = py.plot(parse_data('msft, 'revenue'), filename = 'basic-line', sharing = 'public', auto_open = False)
 	plot_url = py.plot(data, filename = 'basic-line', sharing = 'public', auto_open = False)
 	return plot_url
+
+def plot_offline_data(data):
+	offline = plotly.offline.plot(data, include_plotlyjs=False, output_type='div')
+	return offline

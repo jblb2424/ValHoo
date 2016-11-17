@@ -17,7 +17,12 @@ def get_ticker(request):
     if request.method == 'POST':
         ticker_name = request.POST.get('ticker', None)
         ticker_data = models.parse_data(ticker_name, 'revenue')
-        url = models.plot_data(ticker_data)
-        return render(request, 'home_page.html', {'url': url})
+        #Online plot
+        # url = models.plot_data(ticker_data)
+        #Offline html plot
+        div_plot = models.plot_offline_data(ticker_data)
+   
+        #Change url names when this is finished
+        return render(request, 'home_page.html', {'url': div_plot})
     else:
         return render(request, 'home_page.html')
