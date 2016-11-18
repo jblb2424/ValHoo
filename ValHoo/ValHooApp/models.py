@@ -3,10 +3,10 @@ from django.db import models
 import plotly
 import plotly.plotly as py
 from plotly.graph_objs import *
-from xml.dom import minidom
 import urllib
 import json
-from pprint import pprint
+import plotly.graph_objs as go
+
 
 
 
@@ -56,22 +56,43 @@ def parse_data(ticker, data_to_grab):
 		yr_three = j_obj['result']['rows'][2]['values'][index_of_selection]['value']
 		yr_four = j_obj['result']['rows'][3]['values'][index_of_selection]['value']
 
-		trace = Scatter(
+		trace = go.Scatter(
 		    x=[1, 2, 3, 4],
-		    y=[yr_one, yr_two, yr_three, yr_four]
+		    y=[yr_one, yr_two, yr_three, yr_four],
+		    name=selection
 		)
 
 		list_of_graphs.append(trace)
 
 	data = Data(list_of_graphs)
-	return data
+	compiled_company_information = {"data": data, "name": company_name}
+	return compiled_company_information
 #Online Plot...not used as of right now
 def plot_data(data):
 	# plot_url = py.plot(parse_data('msft, 'revenue'), filename = 'basic-line', sharing = 'public', auto_open = False)
 	plot_url = py.plot(data, filename = 'basic-line', sharing = 'public', auto_open = False)
 	return plot_url
 
-def plot_offline_data(data):
-
-	offline = plotly.offline.plot(data, include_plotlyjs=False, output_type='div')
+def plot_offline_data(company_info):
+	layout = go.Layout(
+    title=company_info["name"],
+    xaxis=dict(
+        title='Year',
+        titlefont=dict(
+            family='Courier New, monospace',
+            size=18,
+            color='#7f7f7f'
+        )
+    ),
+    yaxis=dict(
+        title='Value',
+        titlefont=dict(
+            family='Courier New, monospace',
+            size=18,
+            color='#7f7f7f'
+        )
+    )
+	)
+	fig = go.Figure(data=company_info['data'], layout=layout)
+	offline = plotly.offline.plot(fig, include_plotlyjs=False, output_type='div')
 	return offline
