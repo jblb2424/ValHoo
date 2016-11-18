@@ -13,16 +13,21 @@ import models
 
 
 def get_ticker(request):
-    # if this is a POST request we need to process the form data
+  
     if request.method == 'POST':
-        ticker_name = request.POST.get('ticker', None)
-        ticker_data = models.parse_data(ticker_name, 'revenue')
+        #Grabs the ticker and corresponding value to analyze
+        ticker_name = request.POST.get('ticker', None) 
+        # value_name = request.POST.get('value', None)
+        multiple_values_name = request.POST.getlist('values')
+        print(multiple_values_name)
+        ticker_data = models.parse_data(ticker_name, multiple_values_name)
+
         #Online plot
         # url = models.plot_data(ticker_data)
         #Offline html plot
         div_plot = models.plot_offline_data(ticker_data)
-   
-        #Change url names when this is finished
+
+        #Change url name when this is finished
         return render(request, 'home_page.html', {'url': div_plot})
     else:
         return render(request, 'home_page.html')
