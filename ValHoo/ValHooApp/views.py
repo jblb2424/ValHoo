@@ -1,10 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
-
-from .forms import TickerForm
-import models
-
+from . import models
+from urllib.request import urlopen
 
 # def index(request):
 # 	# return HttpResponse('''<iframe width="800" height="600" frameborder="0" seamless="seamless" scrolling="no" src="https://plot.ly/~jblb2424/0/.embed?width=800&height=600"></iframe>''')

@@ -6,6 +6,7 @@ from plotly.graph_objs import *
 import urllib
 import json
 import plotly.graph_objs as go
+from urllib.request import urlopen
 
 
 # p = py.sign_in("jblb2424", "Peg24lee")
@@ -39,8 +40,9 @@ def parse_data(ticker, data_to_grab):
 	#Treat it as JSON!
 
 	#To reach any value...j_obj['result']['rows'][*YEAR(0-3)*]['values'][*ITEM INDEX*]['value']
-	online_json = urllib.urlopen(url_str)
-	j_obj = json.load(online_json)
+	online_json = urllib.request.urlopen(url_str)
+	str_response = online_json.readall().decode('utf-8')
+	j_obj = json.loads(str_response)
 
 
 	company_name = j_obj['result']['rows'][0]['values'][1]['value']
