@@ -8,8 +8,6 @@ import json
 import plotly.graph_objs as go
 
 
-
-
 # p = py.sign_in("jblb2424", "Peg24lee")
 # plotly('jblb2424', 'yi6kip4q4i')  # this is YOUR account information from plotly
 
@@ -17,6 +15,8 @@ import plotly.graph_objs as go
 plotly.tools.set_credentials_file(username='jblb2424', api_key='yi6kip4q4i')
 
 def parse_data(ticker, data_to_grab):
+	print(ticker)
+	print(data_to_grab)
 	url_str = 'http://edgaronline.api.mashery.com/v2/corefinancials/ann?primarysymbols='+ticker+'&appkey=qmhuw98c4cacxsr5j559gbwn'
 	list_of_graphs = []
 

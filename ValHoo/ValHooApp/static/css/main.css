@@ -1,3 +1,16 @@
 h1{
     color: blue;
 }
+
+body
+{
+background: #eee; 
+}
+
+.instructions {
+	float:left;
+}
+
+.input {
+	float:right;
+}

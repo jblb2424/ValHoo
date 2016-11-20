@@ -18,8 +18,9 @@ def get_ticker(request):
         #Grabs the ticker and corresponding value to analyze
         ticker_name = request.POST.get('ticker', None) 
         # value_name = request.POST.get('value', None)
+        print(ticker_name)
         multiple_values_name = request.POST.getlist('values')
-        print(multiple_values_name)
+   
         ticker_data = models.parse_data(ticker_name, multiple_values_name)
 
         #Online plot
