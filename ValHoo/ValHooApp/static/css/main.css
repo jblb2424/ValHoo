@@ -7,10 +7,75 @@ body
 background: #eee; 
 }
 
-.instructions {
-	float:left;
+.form-inline > li{
+    display:inline
 }
 
-.input {
-	float:right;
+.plotly-graph-div {
+  width: 70% !important;
+  height: 70% !important;
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  top: 50%;
+  left: 65%;
+  margin-right: -80%;
+  transform: translate(-60%, -40%)
+
 }
+
+  /*Horizontal Nav bar*/
+
+.navbar.center .navbar-inner {
+    text-align: center;
+
+
+}
+.navbar.center .navbar-inner .nav {
+    float: none;
+    display:inline-block;
+    padding-top: 10px;
+    padding-right: 50px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+
+}
+
+
+
+/*Side navigation bar*/
+.navbar-fixed-left {
+  width: 180px;
+  position: fixed;
+  border-radius: 0;
+  height: 120%;
+  margin-top: -90px;
+
+}
+
+.navbar-brand
+{
+     margin-left:20%;
+     padding-top: 25px;
+     padding-bottom: 30px;
+     font: "Georgia"
+
+}
+
+
+
+.navbar-fixed-left .navbar-nav > li {
+  float: none;  /* Cancel default li float: left */
+  width: 179px;
+}
+
+.navbar-fixed-left + .container {
+  padding-left: 180px;
+}
+
+/* On using dropdown menu (To right shift popuped) */
+.navbar-fixed-left .navbar-nav > li > .dropdown-menu {
+  margin-top: -50px;
+  margin-left: 180px;
+}
+
