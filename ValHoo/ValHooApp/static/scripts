@@ -1,0 +1,8 @@
+// $('.plotly-graph-div').click(function() {
+//     alert( this.id );
+// });
+
+myPlot.on('plotly_click', function(data){
+    1
+    alert('hello');
+});
