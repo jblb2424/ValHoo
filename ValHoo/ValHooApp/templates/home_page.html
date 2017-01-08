@@ -58,7 +58,9 @@
 		        <option value="change in current liabilities" >Change in Current Liabilities</option>
 		        <option value="effect of exchange rate on cash">Effect of Exchange Rate on Cash</option>
 		        <option value="capital expenditures" >Capital Expenditures</option>
-	        	<option value="revenue" >Revenue</option>     
+	        	<option value="revenue" >Revenue</option> 
+	        	<option data-divider="true"></option>
+	        	<option value="more" >More...</option>    
     		</select> </li>
     		<li><input type="submit" value="Submit" id="submit"></li>
     	</form>
@@ -91,6 +93,56 @@
 	 	<div class="row">
 	 	</div>
 	</div>
+
+	<!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Select More Data</h4>
+        </div>
+        <div class="modal-body container">
+
+        	<div style="float: left; padding-right: 1cm;">
+        	<div class="checkbox">
+  				<label><input type="checkbox" value="">Option 1</label>
+			</div>
+			<div class="checkbox">
+  				<label><input type="checkbox" value="">Option 2</label>
+			</div>
+
+			<div class="checkbox">
+  				<label><input type="checkbox" value="">Option 3</label>
+			</div>
+			</div>
+
+			<div style="float: left;">
+			<div class="checkbox">
+  				<label><input type="checkbox" value="">Option 4</label>
+			</div>
+			<div class="checkbox">
+  				<label><input type="checkbox" value="">Option 5</label>
+			</div>
+			
+			<div class="checkbox">
+  				<label><input type="checkbox" value="" >Option 6</label>
+			</div>
+			</div>
+        </div>
+
+        <div class="modal-footer">
+
+          <input type="submit" value="Submit" id="submitModal">
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+
 
 	</div>
     <!-- Plot -->

@@ -2,7 +2,15 @@
 //     alert( this.id );
 // });
 
-myPlot.on('plotly_click', function(data){
-    1
-    alert('hello');
-});
+// myPlot.on('plotly_click', function(data){
+//     1
+//     alert('hello');
+// });
+$('.selectpicker').on('change', function(){
+    var selected = $(this).find("option:selected").val();
+
+    if(selected == "more") {
+    	$('#myModal').modal('show'); 
+    	$('.selectpicker').selectpicker('deselectAll');
+    }
+  });
