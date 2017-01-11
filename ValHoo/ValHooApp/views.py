@@ -22,14 +22,15 @@ def new_plot(request):
 
     #Initialize a new Plot
     new_plot = models.Plot(ticker_name, multiple_values_name, layout)
- 
+
     ticker_data = new_plot.trace_data(new_plot.parse_data())
 
     #Offline html plot
     div_plot = new_plot.plot_offline_data(ticker_data)
 
-
+    #Stock Value of Plot Ticker
+    stock_value = new_plot.get_stock_value()
 
     #Change url name when this is finished
-    return render(request, 'home_page.html', {'url': div_plot, 'plot': sorted(new_plot.index_dict.keys())})
+    return render(request, 'home_page.html', {'url': div_plot, 'plot': sorted(new_plot.index_dict.keys()), 'stock': stock_value})
 

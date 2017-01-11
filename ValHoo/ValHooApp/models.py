@@ -7,6 +7,7 @@ import urllib
 import json
 import plotly.graph_objs as go
 from urllib.request import urlopen
+from yahoo_finance import Share
 
 
 # p = py.sign_in("jblb2424", "Peg24lee")
@@ -67,6 +68,10 @@ class Plot():
 		"Treasury Stock": 66
 		}
 
+	def get_stock_value(self):
+		yahoo = Share(self.ticker)
+		return yahoo.get_price()
+
 	def parse_data(self):
 		url_str = 'http://edgaronline.api.mashery.com/v2/corefinancials/ann?primarysymbols='+self.ticker+'&appkey=edj5xvdz9gz23mds4tpu8bdd'
 		
@@ -122,7 +127,7 @@ class Plot():
 	def plot_offline_data(self, company_info):
 	
 		layout = go.Layout(
-	    title=company_info["name"],
+	    title=company_info["name"] + ' - Current Stock Price: ' + str(Share(self.ticker).get_price()),
 	    xaxis=dict(
 	        title='Year',
 	        titlefont=dict(
