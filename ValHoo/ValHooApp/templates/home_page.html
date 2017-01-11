@@ -52,13 +52,14 @@
 
 		<form class="form-inline" action = "#" method = "post">
 			{% csrf_token %}
+			{% include "modals.html" %}
 	      	<li id = "one"><input type="text" name = "ticker" method = "post" class = "form-control"placeholder="Enter Company Ticker" size="20"></li>
 	      	<li style="padding-right:10px"><select name = "values" id="valuesID" class="selectpicker" data-live-search="true" title="Select Data to Analyze"multiple>
-		       	<option value="change in current assets" >Change in Current Assets</option>
-		        <option value="change in current liabilities" >Change in Current Liabilities</option>
-		        <option value="effect of exchange rate on cash">Effect of Exchange Rate on Cash</option>
-		        <option value="capital expenditures" >Capital Expenditures</option>
-	        	<option value="revenue" >Revenue</option> 
+		       	<option value="Change in Current Assets" >Change in Current Assets</option>
+		        <option value="Change in Current Liabilities" >Change in Current Liabilities</option>
+		        <option value="Effect of Exchange Rate on Cash">Effect of Exchange Rate on Cash</option>
+		        <option value="Capital Expenditures" >Capital Expenditures</option>
+	        	<option value="Revenue" >Revenue</option> 
 	        	<option data-divider="true"></option>
 	        	<option value="more" >More...</option>    
     		</select> </li>
@@ -93,54 +94,6 @@
 	 	<div class="row">
 	 	</div>
 	</div>
-
-	<!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Select More Data</h4>
-        </div>
-        <div class="modal-body container">
-
-        	<div style="float: left; padding-right: 1cm;">
-        	<div class="checkbox">
-  				<label><input type="checkbox" value="">Option 1</label>
-			</div>
-			<div class="checkbox">
-  				<label><input type="checkbox" value="">Option 2</label>
-			</div>
-
-			<div class="checkbox">
-  				<label><input type="checkbox" value="">Option 3</label>
-			</div>
-			</div>
-
-			<div style="float: left;">
-			<div class="checkbox">
-  				<label><input type="checkbox" value="">Option 4</label>
-			</div>
-			<div class="checkbox">
-  				<label><input type="checkbox" value="">Option 5</label>
-			</div>
-			
-			<div class="checkbox">
-  				<label><input type="checkbox" value="" >Option 6</label>
-			</div>
-			</div>
-        </div>
-
-        <div class="modal-footer">
-
-          <input type="submit" value="Submit" id="submitModal">
-        </div>
-      </div>
-      
-    </div>
-  </div>
 
 
 

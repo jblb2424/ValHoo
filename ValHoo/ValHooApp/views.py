@@ -12,9 +12,11 @@ def index(request):
     if request.method == 'POST':
         #Grabs the ticker and corresponding value to analyze
         ticker_name = request.POST.get('ticker', None) 
+        print(ticker_name)
         # value_name = request.POST.get('value', None)
 
         multiple_values_name = request.POST.getlist('values')
+
 
         new_plot = models.Plot(ticker_name, multiple_values_name)
    
@@ -24,6 +26,8 @@ def index(request):
         div_plot = new_plot.plot_offline_data(ticker_data)
 
         #Change url name when this is finished
-        return render(request, 'home_page.html', {'url': div_plot})
+        return render(request, 'home_page.html', {'url': div_plot, 'plot': sorted(new_plot.index_dict.keys())})
     else:
-        return render(request, 'home_page.html')
+        blank_plot = models.Plot("", []) #Initialize an empty plot
+        print(sorted(blank_plot.index_dict.keys()))
+        return render(request, 'home_page.html', {'plot': sorted(blank_plot.index_dict.keys())})

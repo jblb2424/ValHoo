@@ -1,0 +1,36 @@
+	
+{% load staticfiles %}
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Select More Data</h4>
+        </div>
+        {% csrf_token %}
+        <div class="modal-body container" >
+        	<div style="float: left; padding-right: 1cm;">
+
+          {% for val in plot %}
+            <div class="checkbox" style="float: left;""> 
+              <label><input type="checkbox" value= "{{ val }}" name = "values">{{ val }}</label> 
+            </div>
+            <br>
+
+          {% endfor %}
+
+			</div>
+        </div>
+
+        <div class="modal-footer">
+
+          <input type="submit" value="Submit" id="submit">
+        </div>
+      </div>
+      
+    </div>
+  </div>

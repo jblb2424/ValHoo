@@ -23,36 +23,53 @@ class Plot():
 
 
 	index_dict = {
-		'change in current assets': 25, 
-		'change in current liabilities': 26, 
-		'change in inventories': 27, 
-		'dividends paid': 28, 
-		'effect of exchange rate on cash': 29, 
-		'capital expenditures': 30, 
-		'cash from financing activities': 31, 
-		'cash from investing activities': 32,
-		'cash from operating activities': 33,
-		'revenue': 46
-		
+		'Change in Current Assets': 26, 
+		'Change in Current Liabilities': 27, 
+		'Change in Inventories': 28, 
+		'Dividends Paid': 29, 
+		'Effect of Exchange Rate on Cash': 30, 
+		'Capital Expenditures': 31, 
+		'Cash from Financing Activities': 32, 
+		'Cash From Investing Activities': 33,
+		'Cash From Operating Activities': 34,
+		'CF Depreciation Amorization': 35,
+		'Change in Accounts Receivable': 36,
+		'Net Investment Changes': 37,
+		'Net Change in Cash': 38,
+		'Total Adjustments': 39,
+		'Earnings Before Interest and Taxes': 40,
+		'Cost of Revenue': 41,
+		'Equity Earnings': 42,
+		'Gross Profit': 43,
+		'Income Before Taxes': 44,
+		'Interest Expense': 45,
+		'Net Income': 46,
+		'Net Income Applicable to Common': 47,
+		'Revenue': 48,
+		'Selling General Administrative Expenses': 49,
+		'Common Stock':50,
+		'Cash and Cash Equivalents': 51,
+		'Cash Equivalents and Short Term Investments': 52,
+		'Inventories Net': 53,
+		'Minority Interest': 54,
+		'Other Assets': 55,
+		'Other Liabilities': 56,
+		'Property Plant Eqipment Net': 57,
+		'Retained Earnings': 58,
+		'Total Assets': 59,
+		'Total Current Assets': 60,
+		'Total Current Liabilities': 61,
+		'Total Liabilities': 62,
+		"Total Long Term Debt": 63,
+		"Total Receivables Net": 64,
+		"Total Stockholders Equity": 65,
+		"Treasury Stock": 66
 		}
 
 	def parse_data(self):
 		url_str = 'http://edgaronline.api.mashery.com/v2/corefinancials/ann?primarysymbols='+self.ticker+'&appkey=edj5xvdz9gz23mds4tpu8bdd'
 		list_of_graphs = []
 
-		index_dict = {
-		'change in current assets': 25, 
-		'change in current liabilities': 26, 
-		'change in inventories': 27, 
-		'dividends paid': 28, 
-		'effect of exchange rate on cash': 29, 
-		'capital expenditures': 30, 
-		'cash from financing activities': 31, 
-		'cash from investing activities': 32,
-		'cash from operating activities': 33,
-		'revenue': 46
-		
-		}
 
 		#For some reason the API is shown as XML in browser
 		#But is interpreted as JSON when grabbed form URL
@@ -66,10 +83,11 @@ class Plot():
 
 		company_name = j_obj['result']['rows'][0]['values'][1]['value']
 
+
 		#Compartamentalizes data into x(year) and y(values) for each selection the user makes
 		for selection in self.data:
 
-			index_of_selection = index_dict[selection]
+			index_of_selection = self.index_dict[selection]
 
 			#Data for each year that corresponds to index of selection
 			yr_one = j_obj['result']['rows'][0]['values'][index_of_selection]['value']
@@ -92,6 +110,7 @@ class Plot():
 
 
 	def plot_offline_data(self, company_info):
+		print(company_info['data'])
 		layout = go.Layout(
 	    title=company_info["name"],
 	    xaxis=dict(
