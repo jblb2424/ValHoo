@@ -50,7 +50,7 @@
 	   </div>
 	    <ul class="nav navbar-nav" id="navContent">
 
-		<form class="form-inline" action = "#" method = "post">
+		<form class="form-inline" action = "new_plot" method = "post">
 			{% csrf_token %}
 			{% include "modals.html" %}
 	      	<li id = "one"><input type="text" name = "ticker" method = "post" class = "form-control"placeholder="Enter Company Ticker" size="20"></li>
@@ -84,10 +84,11 @@
 	      	<li><a href="#">Sub Menu5</a></li>
 	     </ul>
 	   </li>
-	   <li><a href="#">Line</a></li>
-	   <li><a href="#">Filled</a></li>
-	   <li><a href="#">Scatter</a></li>
-	   <li><a href="#">Bar</a></li>
+	   <li><a href="#" class = 'graph-settings' value = 'Line'>Line</a></li>
+	   <li><a href="#" class = 'graph-settings' value = 'Filled'>Filled</a></li>
+	   <li><a href="#" class = 'graph-settings' value = 'Scatter'>Scatter</a></li>
+	   <li><a href='#' class = 'graph-settings' value = 'Bar'>Bar</a></li>
+	   <li><a href='#' class = 'graph-settings' value = 'Pie'>Pie</a></li>
 	  </ul>
 	</div>
 	<div class="container">
@@ -95,11 +96,16 @@
 	 	</div>
 	</div>
 
+<!-- <div id="38c39654-d2de-4ed2-9d1e-10ff1559d071" style="height: 100%; width: 100%;" class="plotly-graph-div"></div>
+<script type="text/javascript">
+
+window.PLOTLYENV=window.PLOTLYENV || {};window.PLOTLYENV.BASE_URL="https://plot.ly";Plotly.newPlot("38c39654-d2de-4ed2-9d1e-10ff1559d071", [{"name": "Change in Current Assets", "type": "bar", "x": [1, 2, 3, 4], "y": [7758000000.0, 5729000000.0, 1232000000.0, 599000000.0]}], {"xaxis": {"titlefont": {"size": 18, "color": "#7f7f7f", "family": "Courier New, monospace"}, "title": "Year"}, "yaxis": {"titlefont": {"size": 18, "color": "#7f7f7f", "family": "Courier New, monospace"}, "title": "Value"}, "title": "FORD MOTOR CO"}, {"linkText": "Export to plot.ly", "showLink": true})
+</script> -->
 
 
 	</div>
     <!-- Plot -->
-	<div style="margin:0 auto;text-align:center">
+	<div style="margin:0 auto;text-align:center" value = 'line'>
 		<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 		{{ url | safe}}
 		

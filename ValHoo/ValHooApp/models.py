@@ -17,9 +17,10 @@ plotly.tools.set_credentials_file(username='jblb2424', api_key='yi6kip4q4i')
 
 class Plot():
 
-	def __init__(self, ticker, data):
+	def __init__(self, ticker, data, layout):
 		self.ticker = ticker
 		self.data = data
+		self.layout = layout
 
 
 	index_dict = {
@@ -68,9 +69,7 @@ class Plot():
 
 	def parse_data(self):
 		url_str = 'http://edgaronline.api.mashery.com/v2/corefinancials/ann?primarysymbols='+self.ticker+'&appkey=edj5xvdz9gz23mds4tpu8bdd'
-		list_of_graphs = []
-
-
+		
 		#For some reason the API is shown as XML in browser
 		#But is interpreted as JSON when grabbed form URL
 		#Treat it as JSON!
@@ -79,9 +78,11 @@ class Plot():
 		online_json = urllib.request.urlopen(url_str)
 		str_response = online_json.read().decode('utf-8')
 		j_obj = json.loads(str_response)
+		return j_obj
 
-
-		company_name = j_obj['result']['rows'][0]['values'][1]['value']
+	def trace_data(self, JSON):
+		list_of_graphs = []
+		company_name = JSON['result']['rows'][0]['values'][1]['value']
 
 
 		#Compartamentalizes data into x(year) and y(values) for each selection the user makes
@@ -90,12 +91,21 @@ class Plot():
 			index_of_selection = self.index_dict[selection]
 
 			#Data for each year that corresponds to index of selection
-			yr_one = j_obj['result']['rows'][0]['values'][index_of_selection]['value']
-			yr_two = j_obj['result']['rows'][1]['values'][index_of_selection]['value']
-			yr_three = j_obj['result']['rows'][2]['values'][index_of_selection]['value']
-			yr_four = j_obj['result']['rows'][3]['values'][index_of_selection]['value']
+			yr_one = JSON['result']['rows'][0]['values'][index_of_selection]['value']
+			yr_two = JSON['result']['rows'][1]['values'][index_of_selection]['value']
+			yr_three = JSON['result']['rows'][2]['values'][index_of_selection]['value']
+			yr_four = JSON['result']['rows'][3]['values'][index_of_selection]['value']
+
+
 
 			trace = go.Scatter(
+			    x=[1, 2, 3, 4],
+			    y=[yr_one, yr_two, yr_three, yr_four],
+			    name=selection
+			)
+
+			if self.layout == "Bar":
+				trace = go.Bar(
 			    x=[1, 2, 3, 4],
 			    y=[yr_one, yr_two, yr_three, yr_four],
 			    name=selection
@@ -110,7 +120,7 @@ class Plot():
 
 
 	def plot_offline_data(self, company_info):
-		print(company_info['data'])
+	
 		layout = go.Layout(
 	    title=company_info["name"],
 	    xaxis=dict(

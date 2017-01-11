@@ -1,11 +1,3 @@
-// $('.plotly-graph-div').click(function() {
-//     alert( this.id );
-// });
-
-// myPlot.on('plotly_click', function(data){
-//     1
-//     alert('hello');
-// });
 $('.selectpicker').on('change', function(){
     var selected = $(this).find("option:selected").val();
 
@@ -15,3 +7,41 @@ $('.selectpicker').on('change', function(){
     	$('.selectpicker').selectpicker('deselectAll');
     }
   });
+
+
+
+$('.graph-settings').click(function() {
+	graphType = $(this).attr('value');
+	var update;
+	if(graphType == 'Bar') {
+		update = {
+		'type':'bar'
+		};
+		
+	} else if (graphType == 'Line') {
+		update = {
+		'type':'scatter',
+		'mode': '',
+		'fill': '',
+		};
+	} else if (graphType == 'Filled') {
+		update = {
+		'type':'scatter',
+		'fill': 'tozeroy'
+		};
+	} else if (graphType == 'Scatter') {
+		update = {
+		'type':'scatter',
+		'mode': 'markers',
+		'fill': ''
+		};
+	} else if (graphType == 'Pie') {
+		update = {
+		'type':'pie'
+		};
+	}
+
+
+	Plotly.restyle($('.plotly-graph-div ')[0], update, 0)
+})
+
