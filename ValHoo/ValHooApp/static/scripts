@@ -42,6 +42,6 @@ $('.graph-settings').click(function() {
 	}
 
 
-	Plotly.restyle($('.plotly-graph-div ')[0], update, 0)
+	Plotly.restyle($('.plotly-graph-div ')[0], update, [0, 1])
 })
 
