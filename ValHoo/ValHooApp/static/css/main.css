@@ -1,6 +1,6 @@
-h1{
-    color: blue;
-}
+@import "http://designmodo.github.io/Flat-UI/dist/css/flat-ui.min.css";
+
+
 
 body
 {
@@ -26,8 +26,10 @@ background: #eee;
 
   /*Horizontal Nav bar*/
 
+
 .navbar.center .navbar-inner {
     text-align: center;
+    background: rgba(255,255,255,1);
 
 
 }
@@ -44,12 +46,27 @@ background: #eee;
 
 
 /*Side navigation bar*/
+
+
+
 .navbar-fixed-left {
+
+ background-color: #aed0e0;
+  border-color: #74d1ff;
+  background-image: -webkit-gradient(linear, left 0%, left 100%, from(#c8edff), to(#95dcff));
+  background-image: -webkit-linear-gradient(top, #c8edff, 0%, #aed0e0, 100%);
+  background-image: -moz-linear-gradient(top, #c8edff 0%, #aed0e0 100%);
+  background-image: linear-gradient(to bottom, #c8edff 0%, #aed0e0 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffc8edff', endColorstr='#ff95dcff', GradientType=0);
   width: 180px;
   position: fixed;
   border-radius: 0;
   height: 120%;
-  margin-top: -90px;
+  margin-top: -30px;
+  background: rgba(174,208,224, 0.3);
+
+   
 
 }
 
@@ -58,6 +75,7 @@ background: #eee;
      margin-left:20%;
      padding-top: 25px;
      padding-bottom: 30px;
+
      font: "Georgia"
 
 }
@@ -78,5 +96,4 @@ background: #eee;
   margin-top: -50px;
   margin-left: 180px;
 }
-
 

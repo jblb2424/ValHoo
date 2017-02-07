@@ -13,12 +13,13 @@
         </div>
         {% csrf_token %}
         <div class="modal-body container" >
-        	<div style="float: left; padding-right: 1cm;">
+        	<div style="float: left; padding-right:1cm;">
 
           {% for val in plot %}
             <div class="checkbox" style="float: left;""> 
               <label><input type="checkbox" value= "{{ val }}" name = "values">{{ val }}</label> 
             </div>
+            <br>
             <br>
 
           {% endfor %}
